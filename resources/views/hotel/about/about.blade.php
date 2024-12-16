@@ -14,10 +14,10 @@
     <!-- about_info_area_start -->
     <div class="about_info_area">
         <div class="about_active owl-carousel">
-            <div class="single_slider about_bg_1"></div>
-            <div class="single_slider about_bg_1"></div>
-            <div class="single_slider about_bg_1"></div>
-            <div class="single_slider about_bg_1"></div>
+            <div class="single_slider about_bg_1"><img src="{{ asset('img/about/banquet_1.jpg') }}" alt="" srcset=""></div>
+            <div class="single_slider about_bg_1"><img src="{{ asset('img/about/reception_1.jpg') }}" alt="" srcset=""></div>
+            <div class="single_slider about_bg_1"><img src="{{ asset('img/banner/acceuil_2.jpg') }}" alt="" srcset=""></div>
+            <div class="single_slider about_bg_1"><img src="{{ asset('img/banner/piscine_2.jpg') }}" alt="" srcset=""></div>
         </div>
     </div>
     <!-- about_info_area_start -->
