@@ -24,7 +24,7 @@
                 <div class="col-xl-4 col-md-4">
                     <div class="single_offers">
                         <div class="about_thumb">
-                            <img src="{{asset('img/offers/1.png')}}" alt="">
+                            <img src="{{asset('img/rooms/chambre_1.jpg')}}" alt="">
                         </div>
                         <h3>Up to 35% savings on Club <br> 
                                 rooms and Suites</h3>
@@ -39,7 +39,7 @@
                 <div class="col-xl-4 col-md-4">
                     <div class="single_offers">
                         <div class="about_thumb">
-                            <img src="{{asset('img/offers/2.png')}}" alt="">
+                            <img src="{{asset('img/offers/offer_2.jpg')}}" alt="">
                         </div>
                         <h3>Up to 35% savings on Club <br> 
                                 rooms and Suites</h3>
@@ -54,7 +54,7 @@
                 <div class="col-xl-4 col-md-4">
                     <div class="single_offers">
                         <div class="about_thumb">
-                            <img src="{{asset('img/offers/3.png')}}" alt="">
+                            <img src="{{asset('img/offers/offer_3.jpg')}}" alt="">
                         </div>
                         <h3>Up to 35% savings on Club <br> 
                                 rooms and Suites</h3>
