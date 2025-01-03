@@ -59,14 +59,16 @@
 
                     <div class="input-group">
                         <div class="input-wrapper">
-                            <select id="takeOff" required>
-                                <option value="" disabled selected>chambre</option>
-                                <option value="USA">Haut standing :télé Clim wifi baignoire 62€</option>
-                                <option value="Canada">Chambre familiale : 2 lits , télé, wifi  77€</option>
-                                <option value="UK">Confort: télé Clim wifi petit déjeuner baignoire 108€</option>
-                                <option value="India">Suite junior : télé Clim wifi baignoire salon petit déjeuné 170€</option>
+                            <label for="type-chambre">Type de chambre :</label>
+                            <select id="type-chambre" name="type-chambre" required>
+                                <option value="" disabled selected>Sélectionnez un type de chambre</option>
+                                <option value="standart">Standart : Télé, Climatiseur, Wifi - 44€</option>
+                                <option value="haut-standing">Haut Standing : Télé, Climatiseur, Wifi, Baignoire - 62€</option>
+                                <option value="confort">Confort : Télé, Climatiseur, Wifi, Petit-déjeuner, Baignoire - 108€</option>
+                                <option value="suite-junior">Suite Junior : Télé, Climatiseur, Wifi, Salon, Petit-déjeuner - 170€</option>
                             </select>
                         </div>
+                    </div>
 
                         <div class="icon">
                             <i class="fa-solid fa-book-open"></i>
