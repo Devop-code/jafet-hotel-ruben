@@ -47,7 +47,8 @@
         <section class="left-section" data-aos="fade-right" data-aos-duration="3000" style="z-index: 1000;">
             <div class="content">
                 <h1>Profitez de vos meilleurs<br> moment avec nous.</h1>
-                <form id="bookingForm">
+                {{-- id="bookingForm" --}}
+                <form id="bookingForm" action="{{ route('reservation.send') }}" method="POST"> 
                     <div class="trip-type">
                         <label>
                             <input type="radio" name="tripType" value="return" required>m'envoyer un voiturier
@@ -129,6 +130,7 @@
 
                     <button type="submit">Send</button>
                 </form>
+                
             </div>
 
             <div class="slider">
