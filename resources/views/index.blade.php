@@ -49,6 +49,7 @@
                 <h1>Profitez de vos meilleurs<br> moment avec nous.</h1>
                 {{-- id="bookingForm" --}}
                 <form id="bookingForm" action="{{ route('reservation.send') }}" method="POST"> 
+                    @csrf
                     <div class="trip-type">
                         <label>
                             <input type="radio" name="tripType" value="return" required>m'envoyer un voiturier
@@ -85,7 +86,10 @@
                         <div class="input-wrapper">
                             <input type="text" required class="arrival" placeholder="profession">
                         </div>
-
+                            
+                        <div class="input-wrapper">
+                            <input type="text" name="nom" required class="arrival" placeholder="votre nom">
+                        </div>
                         <div class="icon">
                             <i class="fa-solid fa-user"></i>
                         </div>
