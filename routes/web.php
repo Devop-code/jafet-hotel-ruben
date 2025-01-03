@@ -4,6 +4,7 @@ use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\ReservationController;
 
 
 Route::get('/',[HotelController::class,'reservationPage'])->name('reservation');
@@ -18,3 +19,4 @@ Route::post('newsletter', [NewsletterController::class, 'register'])->name('news
 Route::post('contact', [ContactController::class, 'send'])->name('contact.send');
 
 Route::get('mail', [HotelController::class, 'mail']);
+Route::post('reservation', [ReservationController::class, 'sendConfirmation'])->name('reservation.send');

@@ -90,6 +90,7 @@
                         <div class="input-wrapper">
                             <input type="text" name="nom" required class="arrival" placeholder="votre nom">
                         </div>
+                        
                         <div class="icon">
                             <i class="fa-solid fa-user"></i>
                         </div>
