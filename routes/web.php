@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\NewsletterController;
 
-Route::get('/', [HotelController::class,'index'])->name('home');
+
+Route::get('/',[HotelController::class,'reservationPage'])->name('reservation');
+Route::get('home', [HotelController::class,'home'])->name('home');
 Route::get('contact', [HotelController::class,'contact'])->name('contact');
 Route::get('about', [HotelController::class,'about'])->name('about');
 Route::get('blog', [HotelController::class,'blog'])->name('blog');

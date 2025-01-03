@@ -17,9 +17,13 @@ class HotelController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function reservationPage(){
+        return view('index');
+    }
+
+    public function home()
     {        
-        return view('hotel.index');
+        return view('hotel.home');
     }
 
     public function mail()
