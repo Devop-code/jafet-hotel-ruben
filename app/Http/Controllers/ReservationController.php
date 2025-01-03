@@ -1,66 +1,31 @@
 <?php
-
 namespace App\Http\Controllers;
-use App\Models\Reservation;
+
 use Illuminate\Http\Request;
-use Exception;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ReservationMail;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 class ReservationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function sendConfirmation(Request $request)
     {
-        //
-    }
+        $data = $request->validate([
+            'email' => 'required|email',
+            'nom' => 'required|string',
+            'profession' => 'required|string',
+            'date_entree' => 'required|date',
+            'date_sortie' => 'required|date',
+            'type_chambre' => 'required|string',
+            'voiturier' => 'required|string',
+        ]);
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+        // Générer le PDF
+        $pdf = PDF::loadView('pdf.facture', $data);
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-        dd($request);
-    }
+        // Envoyer l'email avec le PDF en pièce jointe
+        Mail::to($data['email'])->send(new ReservationMail($data, $pdf));
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->back()->with('success', 'Votre réservation a été envoyée avec succès.');
     }
 }
