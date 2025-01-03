@@ -50,14 +50,7 @@
                 {{-- id="bookingForm" --}}
                 <form id="bookingForm" action="{{ route('reservation.send') }}" method="POST"> 
                     @csrf
-                    <div class="trip-type">
-                        <label>
-                            <input type="radio" name="tripType" value="return" required>m'envoyer un voiturier
-                        </label>
-                        <label>
-                            <input type="radio" name="tripType" value="oneway" required>pas de voiturier
-                        </label>
-                    </div>
+                    
 
                     <div class="input-group">
                         <div class="input-wrapper">
@@ -71,7 +64,14 @@
                             </select>
                         </div>
                     </div>
-
+                    <div class="trip-type">
+                        <label>
+                            <input type="radio" name="tripType" value="return" required>m'envoyer un voiturier
+                        </label>
+                        <label>
+                            <input type="radio" name="tripType" value="oneway" required>pas de voiturier
+                        </label>
+                    </div>
                         <div class="icon">
                             <i class="fa-solid fa-book-open"></i>
                         </div>
