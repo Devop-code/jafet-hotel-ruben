@@ -54,7 +54,7 @@
                         <h3>Signature Room</h3>
                     </div> --}}
 
-                    <a href="#test-form" class="line-button text-uppercase">Reservez maintenant</a>
+                    <a href="{{ route("reservation") }}" class="line-button text-uppercase">Reservez maintenant</a>
                 </div>
             </div>
         </div>

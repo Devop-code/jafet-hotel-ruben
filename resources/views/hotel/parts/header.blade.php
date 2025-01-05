@@ -92,7 +92,7 @@
                                 </ul>
                             </div>
                             <div class="book_btn d-none d-lg-block">
-                                <a class="popup-with-form" href="#test-form">
+                                <a class="popup-with-form" href="{{ route("reservation") }}">
                                     Réserver
                                 </a>
                             </div>

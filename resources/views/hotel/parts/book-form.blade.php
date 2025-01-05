@@ -1,5 +1,5 @@
     <!-- form itself end-->
-    <form id="test-form" class="white-popup-block mfp-hide" method="POST" action="{{ route('store') }}">
+    <form id="test-form" class="white-popup-block mfp-hide" method="POST" action="{{ route('reservation') }}">
         @csrf
         @method('POST')
         <div class="popup_box ">

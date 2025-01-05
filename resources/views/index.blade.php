@@ -14,11 +14,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Calligraffitti&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+DE+VA:wght@100..400&family=Rubik+Vinyl&display=swap" rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
     <!-- favicon -->
 
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/logo.png')}}">
-
     
 </head>
 
@@ -26,7 +26,12 @@
     
 
     <!-- HEADER-->
-
+    @if(Session::get('success'))
+    <div class="alert alert-success">{{ Session::get('success') }}</div>
+    @else
+    <div class="alert alert-danger">mauvais enregistrement</div>
+    
+@endif
     <header>
         <div class="logo playwrite">Reservation </div>
         <nav>
@@ -38,6 +43,7 @@
         <div class="menu-icon" id="menuIcon">
             <i class="fa-solid fa-bars"></i>
         </div>
+
     </header>
     
 
@@ -47,15 +53,22 @@
         <section class="left-section" data-aos="fade-right" data-aos-duration="3000" style="z-index: 1000;">
             <div class="content">
                 <h1>Profitez de vos meilleurs<br> moment avec nous.</h1>
-                {{-- id="bookingForm" --}}
-                <form id="bookingForm" action="{{ route('reservation.send') }}" method="POST"> 
+                <form id="bookingForm" action={{route("reservation.send")}} method="POST">
                     @csrf
+                    @method('post')
                     
+                    <div class="trip-type">
+                        <label>
+                            <input type="radio" name="voiturier" value=" avec voiture" required>m'envoyer un voiturier
+                        </label>
+                        <label>
+                            <input type="radio" name="voiturier" value="sans voiture" required>pas de voiturier
+                        </label>
+                    </div>
 
                     <div class="input-group">
                         <div class="input-wrapper">
-                            <label for="type-chambre">Type de chambre :</label>
-                            <select id="type-chambre" name="type-chambre" required>
+                            <select id="takeOff" name="type_chambre" required class="form-control">
                                 <option value="" disabled selected>Sélectionnez un type de chambre</option>
                                 <option value="standart">Standart : Télé, Climatiseur, Wifi - 44€</option>
                                 <option value="haut-standing">Haut Standing : Télé, Climatiseur, Wifi, Baignoire - 62€</option>
@@ -63,47 +76,38 @@
                                 <option value="suite-junior">Suite Junior : Télé, Climatiseur, Wifi, Salon, Petit-déjeuner - 170€</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="trip-type">
-                        <label>
-                            <input type="radio" name="tripType" value="return" required>m'envoyer un voiturier
-                        </label>
-                        <label>
-                            <input type="radio" name="tripType" value="oneway" required>pas de voiturier
-                        </label>
-                    </div>
+
                         <div class="icon">
                             <i class="fa-solid fa-book-open"></i>
                         </div>
 
                         <div class="input-wrapper">
-                            <input type="mail" required class="arrival" placeholder="votre email">
+                            <input type="mail" required class="arrival form-control" name="email" placeholder="votre email">
                         </div>
 
                     </div>
 
                     <div class="input-group">
                         <div class="input-wrapper">
-                            <input type="text" required class="arrival" placeholder="profession">
+                            <input type="text" required class="arrival form-control" name="profession" placeholder="profession">
                         </div>
-                            
                         <div class="input-wrapper">
-                            <input type="text" name="nom" required class="arrival" placeholder="votre nom">
+                            <input type="text" required class="arrival form-control" name="nom" placeholder="Nom complet">
                         </div>
-                        
+
                         <div class="icon">
                             <i class="fa-solid fa-user"></i>
                         </div>
 
                         <div class="input-wrapper">
-                            <input type="text" required class="arrival" placeholder="votre pays de residence">
+                            <input type="text" required class="arrival form-control" name="pays_residence" placeholder="votre pays de residence">
                         </div>
                     </div>
 
                     <div class="input-group">
                         <div class="input-wrapper">
                             <label for="date-naiss">date de naissance</label>
-                            <input type="date" required class="arrival">
+                            <input type="date" required class="arrival form-control" name="date_naissance">
                         </div>
 
                         <div class="icon">
@@ -112,14 +116,14 @@
 
                         <div class="input-wrapper">
                             <label for="nonbre-personne">nombre de personne</label>
-                            <input type="number" required class="arrival">
+                            <input type="number" required class="arrival form-control" name="nombre_personnes">
                         </div>
                     </div>
 
                     <div class="input-group">
                         <div class="input-wrapper">
                             <label for="date-entrer">jour d'entrée</label>
-                            <input type="date" id="departureDate" name="date-entrer" required>
+                            <input type="date" id="departureDate" name="date_entree" class="form-control" required>
                         </div>
 
                         <div class="icon">
@@ -128,14 +132,13 @@
 
                         <div class="input-wrapper">
                             <label for="date-sortie">jour de sortie</label>
-                            <input type="date" id="returnDate" name="date-sortie" required >
+                            <input type="date" id="returnDate" name="date_sortie" class="form-control" required >
                         </div>
                         
                     </div>
 
                     <button type="submit">Send</button>
                 </form>
-                
             </div>
 
             <div class="slider">

@@ -14,7 +14,7 @@
                                 <h3>JET Hotel vous attend</h3>
                                 <p>venez profité de la meilleure expérience</p>
 
-                                <a href="#test-form" class="popup-with-form btn btn-lg btn-primary book-btn mt-4">
+                                <a href="{{ route('reservation') }}" class="popup-with-form btn btn-lg btn-primary book-btn mt-4">
                                     Réserver
                                 </a>
                             </div>
@@ -51,7 +51,7 @@
                                 <h3 class="text-uppercase">JET Hotel Recoit</h3>
                                 <p>dépèchez vous la qualité est au RDV</p>
 
-                                <a href="#test-form" class="popup-with-form btn btn-lg btn-primary book-btn mt-4">
+                                <a href="{{ route("reservation") }}" class="popup-with-form btn btn-lg btn-primary book-btn mt-4">
                                     Réserver
                                 </a>
                             </div>

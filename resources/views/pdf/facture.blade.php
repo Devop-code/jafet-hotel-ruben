@@ -40,21 +40,21 @@
         <p class="text-center">Merci pour votre réservation. Veuillez trouver ci-dessous les détails de votre réservation :</p>
         <div class="details">
             <ul class="list-group">
-                <li class="list-group-item"><span>Nom :</span> {{ $data['nom'] }}</li>
-                <li class="list-group-item"><span>Email :</span> {{ $data['email'] }}</li>
-                <li class="list-group-item"><span>Profession :</span> {{ $data['profession'] }}</li>
-                <li class="list-group-item"><span>Date d'entrée :</span> {{ $data['date_entree'] }}</li>
-                <li class="list-group-item"><span>Date de sortie :</span> {{ $data['date_sortie'] }}</li>
-                <li class="list-group-item"><span>Type de chambre :</span> {{ $data['type_chambre'] }}</li>
-                <li class="list-group-item"><span>Voiturier :</span> {{ $data['voiturier'] }}</li>
+                <li class="list-group-item"><span>Nom :</span> {{ $InfosReservation->nom }}</li>
+                <li class="list-group-item"><span>Email :</span> {{ $InfosReservation->email }}</li>
+                <li class="list-group-item"><span>Profession :</span> {{ $InfosReservation->profession }}</li>
+                <li class="list-group-item"><span>Date d'entrée :</span> {{ $InfosReservation->date_entree }}</li>
+                <li class="list-group-item"><span>Date de sortie :</span> {{ $InfosReservation->date_sortie }}</li>
+                <li class="list-group-item"><span>Type de chambre :</span> {{ $InfosReservation->type_chambre }}</li>
+                <li class="list-group-item"><span>Voiturier :</span> {{ $InfosReservation->voiturier }}</li>
                 <li class="list-group-item"><span>Prix :</span> 
-                    @if($data['type_chambre'] == 'standart')
+                    @if($InfosReservation->type_chambre == 'standart')
                         44€
-                    @elseif($data['type_chambre'] == 'haut-standing')
+                    @elseif($InfosReservation->type_chambre == 'haut-standing')
                         62€
-                    @elseif($data['type_chambre'] == 'confort')
+                    @elseif($InfosReservation->type_chambre == 'confort')
                         108€
-                    @elseif($data['type_chambre'] == 'suite-junior')
+                    @elseif($InfosReservation->type_chambre == 'suite-junior')
                         170€
                     @endif
                 </li>

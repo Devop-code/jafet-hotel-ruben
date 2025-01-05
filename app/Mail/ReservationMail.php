@@ -21,7 +21,7 @@ class ReservationMail extends Mailable
 
     public function build()
     {
-        return $this->view('emails.reservation')
+        return $this->view('mail.reservation')
                     ->subject('Confirmation de Réservation')
                     ->attachData($this->pdf->output(), 'facture.pdf')
                     ->with('data', $this->data);

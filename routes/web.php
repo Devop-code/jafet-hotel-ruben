@@ -19,4 +19,4 @@ Route::post('newsletter', [NewsletterController::class, 'register'])->name('news
 Route::post('contact', [ContactController::class, 'send'])->name('contact.send');
 
 Route::get('mail', [HotelController::class, 'mail']);
-Route::post('reservation', [ReservationController::class, 'sendConfirmation'])->name('reservation.send');
+Route::post('/reservation', [ReservationController::class, 'sendConfirmation'])->name('reservation.send');

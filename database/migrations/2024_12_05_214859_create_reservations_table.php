@@ -19,7 +19,7 @@ class CreateReservationsTable extends Migration
             $table->date('date_entree'); // Date d'entrée
             $table->date('date_sortie'); // Date de sortie
             $table->string('type_chambre'); // Type de chambre
-            $table->decimal('prix', 8, 2); // Prix de la réservation
+            $table->decimal('prix')->default(null); // Prix de la réservation
             $table->string('voiturier'); // Option voiturier (oui/non)
             $table->timestamps(); // Colonnes created_at et updated_at
         });
