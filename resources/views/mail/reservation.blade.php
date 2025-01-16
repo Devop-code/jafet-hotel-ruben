@@ -7,7 +7,7 @@
     <title>Confirmation de Réservation</title>
 </head>
 <body>
-    <h1 class="text-center">Confirmation de Réservation Chez Jet Hotel</h1>
+    <h1 class="text-center">Confirmation de la Réservation Chez Jet Hotel</h1>
     <p class="text-center">Merci pour votre réservation. Veuillez trouver ci-joint la facture de votre réservation.</p>
 </body>
 </html>

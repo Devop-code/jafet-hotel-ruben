@@ -1,261 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>JET HOTEL RSERVATION</title>
-    <!-- External CSS Links -->
-    <link rel="stylesheet" href="{{ asset('css/design.css') }}">
-    <!-- Font Awosome Link -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-     <!-- aos -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- google font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Calligraffitti&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+DE+VA:wght@100..400&family=Rubik+Vinyl&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
-    <!-- favicon -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jet Hotel Reservation</title>
+    <link rel="stylesheet" href="{{asset("css/vs.css")}}">
+    <link href="https://fonts.googleapis.com/css2?family=Sevillana&display=swap" rel="stylesheet">
 
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/logo.png')}}">
-    
 </head>
-
 <body>
-    
-
-    <!-- HEADER-->
-    @if(Session::get('success'))
-    <div class="alert alert-success">{{ Session::get('success') }}</div>
-    @else
-    <div class="alert alert-danger">mauvais enregistrement</div>
-    
-@endif
+    <!-- Header -->
     <header>
-        <div class="logo playwrite">Reservation </div>
-        <nav>
-            <ul class="navbar">
-                <li><h1 class="calligraffitti-regular">JET -  HOTEL</h1></li>
-                <li><img src="{{asset('img/logo-white.png')}}" alt="jet logo" height="80px"></li>
+        <nav class="navbar">
+            <div class="logo">
+                <h1><a href="vs.html"><img src="{{asset("img/logo.png")}}" alt="">JetHotel.online</a></h1>
+            </div>
+            <div class="flag">
+                <span>USD</span>
+                <span>Douala</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{{ route('home') }}">visitez notre site</a></li>
+                <li><a href="{{ route('blog') }}">Blog</a></li>
             </ul>
         </nav>
-        <div class="menu-icon" id="menuIcon">
-            <i class="fa-solid fa-bars"></i>
-        </div>
-
-    </header>
-    
-
-    <!-- Main Section -->
-
-    <main class="main-container">
-        <section class="left-section" data-aos="fade-right" data-aos-duration="3000" style="z-index: 1000;">
-            <div class="content">
-                <h1>Profitez de vos meilleurs<br> moment avec nous.</h1>
-                <form id="bookingForm" action={{route("reservation.send")}} method="POST">
-                    @csrf
+    </header><!-- Main Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="sevillana-regular">Réservez l'hôtel de vos rêves</h1>
+            <div class="div-form">
+                <form class="rserve-form" action="{{route('reservation.send')}}" methode="POST">
                     @method('post')
-                    
-                    <div class="trip-type">
-                        <label>
-                            <input type="radio" name="voiturier" value=" avec voiture" required>m'envoyer un voiturier
-                        </label>
-                        <label>
-                            <input type="radio" name="voiturier" value="sans voiture" required>pas de voiturier
-                        </label>
+                    @csrf
+                    <div class="form-container">
+                        <div class="date">
+                            <div class="rserve-input"><span>du</span><input type="date" name="date_entree" value="2015-06-09" id="date_e" placeholder="Date d'arrivée" title="Date d'arrivée" arial-label="Ou allez vous"></div>
+                            <div class="rserve-input"><span>au</span><input type="date" placeholder="" name="date_sortie" title="Date de départ" value="2015-06-14" ></div>
+                        </div>
+                        <input type="text" name="pays_provenance" placeholder="pays de provenance" class="rserve-input">
+                        <input type="text" name="email" placeholder="votre email" class="rserve-input">
+                        <input type="text" name="nom" placeholder="votre nom" class="rserve-input">
+                        <input type="text" name="prenom" placeholder="votre prénom" class="rserve-input">
+                        <input type="number" name="telephone" placeholder="téléphone" class="rserve-input">
+                        <input type="text" name="voiturier" placeholder="voiturier ?" class="rserve-input">
+                        <button id="select-room" type="button">selectionnez les chambres</button>
+                        <div class="number">
+                            <input type="number" name="chambre">
+                        </div>
+                        <div class="select-room">
+
+                            <!-- 1e methode ave js et l'incrementation -->
+                            <!-- <ul style="list-style: none;padding: 50px;position: relative;">
+                                <li class="chambre1" value="1"><span>+</span><span class="n1"></span> Haut standing :télé Clim wifi baignoire 62€ <span>-</span></li>
+                                <li class="chambre2" value="1"><span>+</span><span class="n2"></span> Chambre familiale : 2 lits , télé, wifi  77€ <span>-</span></li>
+                                <li class="chambre3" value="1"><span>+</span><span class="n3"></span> Confort: télé Clim wifi petit déjeuner baignoire 108€ <span>-</span></li>
+                                <li class="chambre4" value="1"><span>+</span><span class="n4"></span> Suite junior : télé Clim wifi baignoire salon petit déjeuné 170€ <span>-</span></li>
+                                <span id="closer">fermer</span>
+                                <div style="display: flex;align-items: end;justify-content: center;">
+                                    <span class="aide">+ pour ajouter</span>
+                                    <span class="aide">- pour retirer</span>
+                                </div>
+                            </ul> -->
+
+                            <div class="second-method" style="position: relative;">
+
+                                <div>
+                                    <input type="checkbox" name="" id="">
+                                    <label for="">Haut standing :télé Clim wifi baignoire 62€ </label>
+                                    <input type="number" placeholder="nombre de chambre">
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="" id="">
+                                    <label for="">Haut standing :télé Clim wifi baignoire 62€ </label>
+                                    <input type="number" placeholder="nombre de chambre">
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="" id="">
+                                    <label for="">Haut standing :télé Clim wifi baignoire 62€ </label>
+                                    <input type="number" placeholder="nombre de chambre">
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="" id="">
+                                    <label for="">Haut standing :télé Clim wifi baignoire 62€ </label>
+                                    <input type="number" placeholder="nombre de chambre">
+                                </div>
+
+                                <div>
+                                    <p>
+                                        selectionnez les chambres que vous souhaitez <br>et entre le nombre de chambres de ce type
+                                    </p>
+                                </div>
+                                <span id="closer">fermer</span>
+                            </div>
+
+                        </div>
                     </div>
 
-                    <div class="input-group">
-                        <div class="input-wrapper">
-                            <select id="takeOff" name="type_chambre" required class="form-control">
-                                <option value="" disabled selected>Sélectionnez un type de chambre</option>
-                                <option value="standart">Standart : Télé, Climatiseur, Wifi - 44€</option>
-                                <option value="haut-standing">Haut Standing : Télé, Climatiseur, Wifi, Baignoire - 62€</option>
-                                <option value="confort">Confort : Télé, Climatiseur, Wifi, Petit-déjeuner, Baignoire - 108€</option>
-                                <option value="suite-junior">Suite Junior : Télé, Climatiseur, Wifi, Salon, Petit-déjeuner - 170€</option>
-                            </select>
-                        </div>
 
-                        <div class="icon">
-                            <i class="fa-solid fa-book-open"></i>
-                        </div>
-
-                        <div class="input-wrapper">
-                            <input type="mail" required class="arrival form-control" name="email" placeholder="votre email">
-                        </div>
-
-                    </div>
-
-                    <div class="input-group">
-                        <div class="input-wrapper">
-                            <input type="text" required class="arrival form-control" name="profession" placeholder="profession">
-                        </div>
-                        <div class="input-wrapper">
-                            <input type="text" required class="arrival form-control" name="nom" placeholder="Nom complet">
-                        </div>
-
-                        <div class="icon">
-                            <i class="fa-solid fa-user"></i>
-                        </div>
-
-                        <div class="input-wrapper">
-                            <input type="text" required class="arrival form-control" name="pays_residence" placeholder="votre pays de residence">
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <div class="input-wrapper">
-                            <label for="date-naiss">date de naissance</label>
-                            <input type="date" required class="arrival form-control" name="date_naissance">
-                        </div>
-
-                        <div class="icon">
-                            <i class="fa-solid fa-tag"></i>
-                        </div>
-
-                        <div class="input-wrapper">
-                            <label for="nonbre-personne">nombre de personne</label>
-                            <input type="number" required class="arrival form-control" name="nombre_personnes">
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <div class="input-wrapper">
-                            <label for="date-entrer">jour d'entrée</label>
-                            <input type="date" id="departureDate" name="date_entree" class="form-control" required>
-                        </div>
-
-                        <div class="icon">
-                            <i class="fa-solid fa-calendar-days"></i>
-                        </div>
-
-                        <div class="input-wrapper">
-                            <label for="date-sortie">jour de sortie</label>
-                            <input type="date" id="returnDate" name="date_sortie" class="form-control" required >
-                        </div>
-                        
-                    </div>
-
-                    <button type="submit">Send</button>
+                    <button type="submit">reservez maintenant</button>
                 </form>
             </div>
-
-            <div class="slider">
-                <div class="slider-header">
-                    <h2 class="calligraffitti-regular">apercu de nos chambres </h2>
-                    <div class="slider-buttons">
-                        <button id="prev" class="slider-btn">
-                            <i class="fa-solid fa-angle-left"></i>
-                        </button>
-
-                        <button id="next" class="slider-btn">
-                            <i class="fa-solid fa-angle-right"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="slider-container">
-                    <div class="slider-images">
-                        <div class="slide">
-                            <img src="{{ asset('img/rooms/chambre3.jpg')}}" alt="Cyprus">
-                            <div class="info">
-                                <p class="location"></p>
-                                <p class="sub-location"></p>
-                                <div class="price">
-                                    <span class="slide-icon"><i class="fa-solid fa-plane-departure"></i></span>
-                                    <span></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="slide">
-                            <img src="{{ asset('img/rooms/chambre2.jpg')}}" alt="Estonia">
-                            <div class="info">
-                                <p class="location"></p>
-                                <p class="sub-location"></p>
-                                <div class="price">
-                                    <span class="slide-icon"><i class="fa-solid fa-plane-departure"></i></span>
-                                    <span></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="slide">
-                            <img src="{{ asset('img/rooms/chambre4.jpg')}}" alt="France">
-                            <div class="info">
-                                <p class="location"></p>
-                                <p class="sub-location"></p>
-                                <div class="price">
-                                    <span class="slide-icon"><i class="fa-solid fa-plane-departure"></i></span>
-                                    <span></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="slide">
-                            <img src="{{ asset('img/rooms/chambre1.jpg')}}" alt="Germany">
-                            <div class="info">
-                                <p class="location"></p>
-                                <p class="sub-location"></p>
-                                <div class="price">
-                                    <span class="slide-icon"><i class="fa-solid fa-plane-departure"></i></span>
-                                    <span></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="slide">
-                            <img src="{{ asset('img/rooms/chambre2.jpg')}}" alt="India">
-                            <div class="info">
-                                <p class="location"></p>
-                                <p class="sub-location"></p>
-                                <div class="price">
-                                    <span class="slide-icon"><i class="fa-solid fa-plane-departure"></i></span>
-                                    <span></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="slide">
-                            <img src="{{ asset('img/rooms/chambre3.jpg')}}"Greece">
-                            <div class="info">
-                                <p class="location"></p>
-                                <p class="sub-location"></p>
-                                <div class="price">
-                                    <span class="slide-icon"><i class="fa-solid fa-plane-departure"></i></span>
-                                    <span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="right-section" data-aos="fade-up-left" data-aos-duration="3000">
-            <!-- <img src="Assets/pexels-vince-25003400.jpg')}}" width=""> -->
-             <h1 class="calligraffitti-regular"><strong>entrez les informations de votre reservations</strong>,<br> faites le bon choix de chambres, <br>celle qui vous correspond le mieux <br>
-                puis retrouvez nous la date mentionnez <br>pour passer un bon moment et vous divertir,<br> comme jamais auparavant. votre satisfaction notre priorité<br>
-                <br>
-                <a class="visit" href="{{url('home')}}">visitez jet hotel</a>
-            </h1>
-
-            
-        </section>
-    </main>
+        </div>
+    </section>
 
 
-    
 
-    <!-- JavaScript -->
-    <script type="text/javascript" src="{{ asset('js/rooms_list.js')}}"></script>
-    <!-- AOS JS -->
-      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-        AOS.init({
-            offset: 1
-        });
-    </script>
+        <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 JetHotel - Tous droits réservés</p>
+    </footer>
+    <script src="{{asset("js/input.js")}}"></script>
 </body>
 </html>
