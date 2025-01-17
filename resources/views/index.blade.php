@@ -29,8 +29,8 @@
         <div class="hero-content">
             <h1 class="sevillana-regular">Réservez l'hôtel de vos rêves</h1>
             <div class="div-form">
-                <form class="rserve-form" action="{{route('reservation.send')}}" methode="POST">
-                    @method('post')
+                <form class="rserve-form" action="{{route('reservation.send')}}" method ="POST">
+                    
                     @csrf
                     <div class="form-container">
                         <div class="date">
@@ -44,9 +44,6 @@
                         <input type="number" name="telephone" placeholder="téléphone" class="rserve-input">
                         <input type="text" name="voiturier" placeholder="voiturier ?" class="rserve-input">
                         <button id="select-room" type="button">selectionnez les chambres</button>
-                        <div class="number">
-                            <input type="number" name="chambre">
-                        </div>
                         <div class="select-room">
 
                             <!-- 1e methode ave js et l'incrementation -->
@@ -65,24 +62,24 @@
                             <div class="second-method" style="position: relative;">
 
                                 <div>
-                                    <input type="checkbox" name="" id="">
+                                    <input type="checkbox" name="standart_check" id="">
+                                    <label for="">Haut standing :télé Clim wifi baignoire 62€ </label>
+                                    <input type="number" name="standart" placeholder="nombre de chambre">
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="haut_standing_check" id="">
                                     <label for="">Haut standing :télé Clim wifi baignoire 62€ </label>
                                     <input type="number" placeholder="nombre de chambre">
                                 </div>
                                 <div>
-                                    <input type="checkbox" name="" id="">
+                                    <input type="checkbox" name="confor_check" id="">
                                     <label for="">Haut standing :télé Clim wifi baignoire 62€ </label>
                                     <input type="number" placeholder="nombre de chambre">
                                 </div>
                                 <div>
-                                    <input type="checkbox" name="" id="">
+                                    <input type="checkbox" name="suite_junior_check" id="">
                                     <label for="">Haut standing :télé Clim wifi baignoire 62€ </label>
-                                    <input type="number" placeholder="nombre de chambre">
-                                </div>
-                                <div>
-                                    <input type="checkbox" name="" id="">
-                                    <label for="">Haut standing :télé Clim wifi baignoire 62€ </label>
-                                    <input type="number" placeholder="nombre de chambre">
+                                    <input type="number" name="suite_junior" placeholder="nombre de chambre">
                                 </div>
 
                                 <div>
